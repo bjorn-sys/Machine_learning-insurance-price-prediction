@@ -1,5 +1,3 @@
----
-
 # 🏥 Insurance Charges Prediction - README
 
 # 📊 Project Overview
