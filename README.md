@@ -1,238 +1,238 @@
 
-INSURANCE CHARGES PREDICTION - README
+# INSURANCE CHARGES PREDICTION - README
 
-PROJECT OVERVIEW
+# PROJECT OVERVIEW
 
-This project predicts individual medical insurance charges based on demographic and health-related data. The objective is to identify the most impactful features on cost and to build an accurate model for predicting charges.
-
-
----
-
-LIBRARIES USED
-
-NumPy – for numerical operations
-
-Pandas – for data manipulation and analysis
-
-Matplotlib – for data visualization
-
-Seaborn – for statistical graphics
-
-Scikit-learn – for machine learning models and evaluation
-
-LinearRegression
-
-SVR
-
-RandomForestRegressor
-
-GradientBoostingRegressor
-
-train_test_split, cross_val_score, r2_score
-
-LabelEncoder
-
-
-XGBoost – for optimized gradient boosting
-
-Pickle – for saving and loading the trained model
-
+* This project predicts individual medical insurance charges based on demographic and health-related data. The objective is to identify the most impactful features on cost and to build an accurate model for predicting charges.
 
 
 ---
 
-DATASET SUMMARY
+# LIBRARIES USED
 
-Rows: 1,328 (after cleaning)
+* NumPy – for numerical operations
 
-Columns: 7
+* Pandas – for data manipulation and analysis
 
-Target: charges (annual medical insurance cost)
+* Matplotlib – for data visualization
+
+* Seaborn – for statistical graphics
+
+* Scikit-learn – for machine learning models and evaluation
+
+* LinearRegression
+
+* SVR
+
+* RandomForestRegressor
+
+* GradientBoostingRegressor
+
+* train_test_split, cross_val_score, r2_score
+
+* LabelEncoder
 
 
-FEATURES:
+* XGBoost – for optimized gradient boosting
 
-age: Age in years
-
-sex: 0 = Male, 1 = Female
-
-bmi: Body Mass Index
-
-children: Number of dependents covered by insurance
-
-smoker: 1 = Smoker, 0 = Non-smoker
-
-region: 0 = northwest, 1 = northeast, 2 = southeast, 3 = southwest
+* Pickle – for saving and loading the trained model
 
 
 
 ---
 
-EXPLORATORY DATA ANALYSIS (EDA)
+# DATASET SUMMARY
 
-CATEGORICAL INSIGHTS:
+* Rows: 1,328 (after cleaning)
 
-Sex is roughly balanced (about 50/50 male/female)
+* Columns: 7
 
-About 20% of the individuals are smokers
-
-Southeast region has the highest representation
+* Target: charges (annual medical insurance cost)
 
 
-NUMERICAL INSIGHTS:
+**FEATURES:**
 
-Age vs Charges: Costs increase exponentially with age, more so for smokers
+* age: Age in years
 
-BMI vs Charges: Charges increase with higher BMI, especially among smokers
+* sex: 0 = Male, 1 = Female
 
-Children vs Charges: A slight positive correlation
+* bmi: Body Mass Index
 
-Smoker vs Charges: Smokers have drastically higher costs than non-smokers
+* children: Number of dependents covered by insurance
 
+* smoker: 1 = Smoker, 0 = Non-smoker
 
-CORRELATION WITH CHARGES:
-
-Smoker: +0.79
-
-Age: +0.30
-
-BMI: +0.20
-
-Children: +0.07
-
-Sex: ~0.00
-
-
-Key insight: Smoking status is by far the most influential factor on insurance costs.
-
-
----
-
-DISTRIBUTION ANALYSIS
-
-Charges are right-skewed (most under $15,000, with some over $50,000)
-
-BMI is normally distributed; outliers were removed using IQR
-
-Age is evenly distributed between 18 and 64
+* region: 0 = northwest, 1 = northeast, 2 = southeast, 3 = southwest
 
 
 
 ---
 
-DATA PREPROCESSING
+# EXPLORATORY DATA ANALYSIS (EDA)
 
-Removed 1 duplicate and missing values
+**CATEGORICAL INSIGHTS:**
 
-Label-encoded categorical features
+* Sex is roughly balanced (about 50/50 male/female)
 
-Removed BMI outliers using IQR
+* About 20% of the individuals are smokers
 
-No scaling applied (not needed for tree-based models)
+* Southeast region has the highest representation
+
+
+**NUMERICAL INSIGHTS:**
+
+* Age vs Charges: Costs increase exponentially with age, more so for smokers
+
+* BMI vs Charges: Charges increase with higher BMI, especially among smokers
+
+* Children vs Charges: A slight positive correlation
+
+* Smoker vs Charges: Smokers have drastically higher costs than non-smokers
+
+
+**CORRELATION WITH CHARGES:**
+
+* Smoker: +0.79
+
+* Age: +0.30
+
+* BMI: +0.20
+
+* Children: +0.07
+
+* Sex: ~0.00
+
+
+**Key insight: Smoking status is by far the most influential factor on insurance costs.**
+
+
+---
+
+# DISTRIBUTION ANALYSIS
+
+* Charges are right-skewed (most under $15,000, with some over $50,000)
+
+* BMI is normally distributed; outliers were removed using IQR
+
+* Age is evenly distributed between 18 and 64
 
 
 
 ---
 
-MODEL COMPARISON & RESULTS
+# DATA PREPROCESSING
 
-Final model: XGBoost Regressor
-Hyperparameters:
+* Removed 1 duplicate and missing values
 
-n_estimators=15
+* Label-encoded categorical features
 
-max_depth=3
+* Removed BMI outliers using IQR
 
-gamma=0
-
-
-
----
-
-FEATURE IMPORTANCE (XGBoost)
-
-Smoker: 81%
-
-BMI: 11%
-
-Age: 5%
-
-Children: 1%
-
-
-Smoker status is the dominant predictor of charges.
-
-
----
-
-RESIDUAL ANALYSIS
-
-Residuals follow an approximately normal distribution
-
-No major signs of heteroscedasticity (variance is constant)
-
-Indicates a good model fit
+* No scaling applied (not needed for tree-based models)
 
 
 
 ---
 
-INSIGHTS FROM GROUPED DATA
+# MODEL COMPARISON & RESULTS
 
-Average Charges by Smoking Status:
+**Final model: XGBoost Regressor**
+**Hyperparameters:**
 
-Smokers: ~$32,000
+* n_estimators=15
 
-Non-smokers: ~$8,400
+* max_depth=3
+
+* gamma=0
+
+
+
+---
+
+# FEATURE IMPORTANCE (XGBoost)
+
+* Smoker: 81%
+
+* BMI: 11%
+
+* Age: 5%
+
+* Children: 1%
+
+
+**Smoker status is the dominant predictor of charges.**
+
+
+---
+
+# RESIDUAL ANALYSIS
+
+* Residuals follow an approximately normal distribution
+
+* No major signs of heteroscedasticity (variance is constant)
+
+* Indicates a good model fit
+
+
+
+---
+
+# INSIGHTS FROM GROUPED DATA
+
+**Average Charges by Smoking Status:**
+
+* Smokers: **$32,000**
+
+* Non-smokers: **$8,400**
 (Smokers pay ~3.8x more)
 
 
-Average Charges by Age Range:
+**Average Charges by Age Range:**
 
-18–30: ~$7,000
+* 18–30: **$7,000**
 
-31–45: ~$11,500
+* 31–45: **$11,500**
 
-46–60: ~$18,000
+* 46–60: **$18,000**
 
-60+: ~$21,000
+* 60+: **$21,000**
 
 
-Average Charges by BMI Group:
+**Average Charges by BMI Group:**
 
-BMI < 25: ~$9,500
+* BMI < 25: **$9,500
 
-BMI 25–30: ~$12,000
+* BMI 25–30: **$12,000**
 
-BMI > 30: ~$16,000
+* BMI > 30: **$16,000**
 
 
 
 ---
 
-MODEL TESTING EXAMPLE
+# MODEL TESTING EXAMPLE
 
 Input:
 
-age: 29
+* age: 29
 
-sex: 1
+* sex: 1
 
-bmi: 30.9
+* bmi: 30.9
 
-children: 0
+* children: 0
 
-smoker: 1
+* smoker: 1
 
-region: 1
+* region: 1
 
 
-Predicted Charges: $37,213.40
+**Predicted Charges: $37,213.40**
 
 
 ---
 
-BUSINESS RECOMMENDATIONS
+# BUSINESS RECOMMENDATIONS
 
 1. Implement differential pricing for smokers (higher premiums)
 
@@ -250,10 +250,10 @@ BUSINESS RECOMMENDATIONS
 
 ---
 
-MODEL DEPLOYMENT
+# MODEL DEPLOYMENT
 
-Saved using Pickle:
+* Saved using Pickle:
 
-from pickle import dump
-dump(finalmodel, open('insurancemodelf.pkl', 'wb'))
+* from pickle import dump
+* dump(finalmodel, open('insurancemodelf.pkl', 'wb'))
 
