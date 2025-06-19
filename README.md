@@ -272,3 +272,9 @@ Model was saved using Pickle:
 
 from pickle import dump
 dump(finalmodel, open('insurancemodelf.pkl', 'wb'))
+
+---
+**Streamlit Deployment**
+Model was deployed using streamlit 
+---
+**App.py**
